@@ -1,0 +1,22 @@
+name: Cerrar Issue
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  close-issue:
+    run-on: ubuntu-latest
+    if: github.event.pull_request.merged == true #Asegura que el PR ha sido aceptado (merged)
+    steps:
+      - name: Cerrar Issue
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const issue_number = ${JSON.stringify(github.event.pull_request.issue_url).split('/').pop()};
+            github.issues.update({
+              owner: 'MaxLyonel',
+              repo: 'TestGitHubActions',
+              issue_number: issue_number,
+              state: 'closed'
+            });
