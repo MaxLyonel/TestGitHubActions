@@ -6,7 +6,7 @@ on:
 
 jobs:
   close-issue:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true #Asegura que el PR ha sido aceptado (merged)
     steps:
       - name: Cerrar Issue
