@@ -13,7 +13,7 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
-            const issue_number = ${JSON.stringify(github.event.pull_request.issue_url).split('/').pop()};
+            const issue_number = ${{JSON.stringify(github.event.pull_request.issue_url).split('/').pop()}};
             github.issues.update({
               owner: 'MaxLyonel',
               repo: 'TestGitHubActions',
